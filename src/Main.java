@@ -12,7 +12,7 @@ public class Main {
 
     public static String Calc() throws Exception {
         Pattern patternRome = Pattern.compile("([IVXCLMD]*)\\s*([-+*/])\\s*([IVXCLMD]*)");
-        Pattern patternNum = Pattern.compile("([1234567890]*)\\s*([-+*/])\\s*([1234567890])");
+        Pattern patternNum = Pattern.compile("([1234567890]*)\\s*([-+*/])\\s*([1234567890]*)");
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
         Matcher matcherRome = patternRome.matcher(input);
@@ -33,6 +33,8 @@ public class Main {
         int Operand1 = Integer.parseInt(matcherNum.group(1));
         String Operation = matcherNum.group(2);
         int Operand2 = Integer.parseInt(matcherNum.group(3));
+        if (Operand1 > 10 || Operand1 <= 0) {throw new Exception("Неверное выражение.");}
+        if (Operand2 > 10 || Operand2 <= 0) {throw new Exception("Неверное выражение.");}
         switch (Operation) {
             case "+":
                 return String.valueOf(Operand1 + Operand2);
